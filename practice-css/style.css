@@ -1,5 +1,80 @@
 ファイル:style.css
 
+/* 全体の背景やフォントの設定 */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  background-color: #f8f9fa; /* ほんのり明るいグレーの背景 */
+  color: #333333;            /* 文字色は真っ黒ではなく目に優しい濃いグレー */
+  line-height: 1.6;          /* 行間を広げて読みやすく */
+  padding: 30px 20px;        /* 画面端の余白 */
+  max-width: 800px;          /* 横幅が広がりすぎないように制限 */
+  margin: 0 auto;            /* 画面の中央に配置 */
+}
+
+/* メインタイトルのデザイン */
 h1 {
-    color: green;
+  font-size: 24px;
+  color: #2c3e50;            /* 深みのあるネイビー */
+  border-bottom: 3px solid #dee2e6; /* 下に境界線を入れる */
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+/* 店舗ごとのカード（ボックス） */
+.shop-card {
+  background-color: #ffffff; /* ボックスの中は白 */
+  border-radius: 8px;        /* 角を少し丸くする */
+  padding: 20px 25px;        /* ボックス内の余白 */
+  margin-bottom: 25px;       /* カード同士の間隔 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* ほんのり軽い影をつけて浮き上がらせる */
+  border: 1px solid #e9ecef; /* うっすらとした枠線 */
+}
+
+/* 「検索結果○件目」の見出し */
+.shop-card h2 {
+  font-size: 14px;
+  color: #6c757d;            /* 補足情報らしくグレーに */
+  margin: 0 0 5px 0;
+}
+
+/* 「店舗名：〇〇」の見出し */
+.shop-card h3 {
+  font-size: 18px;
+  color: #d9534f;            /* グルメサイトらしい温かみのある赤・オレンジ系 */
+  margin: 0 0 15px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #dee2e6; /* 店舗名の下に点線 */
+}
+
+/* リスト（箇条書き部分）の調整 */
+.shop-card ul {
+  list-style: none;          /* デフォルトの「・」を消す */
+  padding: 0;
+  margin: 0;
+}
+
+.shop-card li {
+  margin-bottom: 10px;       /* 項目ごとの隙間 */
+  font-size: 14px;
+}
+
+/* 「住所：」「予算：」などのラベル部分を目立たせる */
+.label {
+  font-weight: bold;
+  color: #495057;
+  display: inline-block;
+  width: 90px;               /* 縦のラインが綺麗に揃うように横幅を固定 */
+}
+
+/* 住所のマップリンクのデザイン */
+.shop-card a {
+  color: #0066cc;            /* 綺麗な青色 */
+  text-decoration: none;     /* 最初は下線を消しておく */
+  font-weight: 500;
+}
+
+/* 住所にマウスを載せたとき（ホバー時）の動き */
+.shop-card a:hover {
+  text-decoration: underline; /* マウスを載せると下線が出る */
+  color: #004499;             /* 少し濃い青に変わる */
 }
