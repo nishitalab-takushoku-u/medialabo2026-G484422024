@@ -1,25 +1,28 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
+// 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
+  let shop1 = data.results.shop[0];
   console.log("検索結果1件目");
-  console.log("店舗名: バグダッドカフェ Bagdadcafe/モータウン MOTOWN");
-  console.log("住所: 東京都八王子市明神町4-6-12 ホテル・ザ・ビー八王子(旧八王子プラザホテル)2F");
-  console.log("予算: 3001~4000円");
-  console.log("キャッチコピー: [サプライズ演出有]結婚パーティー受付中");
-  console.log("ジャンル: 居酒屋");
-  console.log("営業日時: 月~日、祝日、祝前日: 17:00~21:00 (料理L.O. 20:00 ドリンクL.O. 20:00)");
-  console.log("アクセス: 京王八王子駅を背にし右手に見えるローソンの隣のビル、ホテルザ・ビーの2階です。");
-  console.log("最寄駅: 京王八王子駅");
+  console.log("店舗名: " + shop1.name);
+  console.log("住所: " + shop1.address);
+  console.log("予算: " + shop1.budget.name);
+  console.log("キャッチコピー: " + shop1.catch);
+  console.log("ジャンル: " + shop1.genre.name);
+  console.log("営業日時: " + shop1.open);
+  console.log("アクセス: " + shop1.access);
+  console.log("最寄駅: " + shop1.station_name);
 
+  let shop2 = data.results.shop[1];
   console.log("検索結果2件目");
-  console.log("店舗名: 隠れ家バル Funny&Bouquet");
-  console.log("住所: 東京都八王子市東町12-14");
-  console.log("予算: 2001~3000円");
-  console.log("キャッチコピー: 2.5時間飲み放題付2000円~ [少人数様ソファー]");
-  console.log("ジャンル: 居酒屋");
-  console.log("営業日時: 月~日、祝日、祝前日: 17:00~翌5:00 (料理L.O. 翌3:00 ドリンクL.O. 翌4:00)");
-  console.log("アクセス: JR八王子駅北口徒歩1分/京王八王子駅徒歩3分");
-  console.log("最寄駅: 八王子駅");
+  console.log("店舗名: " + shop2.name);
+  console.log("住所: " + shop2.address);
+  console.log("予算: " + shop2.budget.name);
+  console.log("キャッチコピー: " + shop2.catch);
+  console.log("ジャンル: " + shop2.genre.name);
+  console.log("営業日時: " + shop2.open);
+  console.log("アクセス: " + shop2.access);
+  console.log("最寄駅: " + shop2.station_name);
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
@@ -27,8 +30,21 @@ function printDom(data) {
 
 }
 
+// ★ここに今回のコードを書き加える
+function kensakuStart() {
+  let inputElement = document.querySelector('input#kensaku');
+  let key = inputElement.value;
+  console.log('検索キー: ' + key);
+}
+
+let searchButton = document.querySelector('button#search');
+searchButton.addEventListener('click', kensakuStart);
+
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
+
+
+// 課題6-1 のイベントハンドラ登録処理は以下に記述
 
 
 
