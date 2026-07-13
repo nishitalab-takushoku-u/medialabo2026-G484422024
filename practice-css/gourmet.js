@@ -1,6 +1,3 @@
-
-// 課題3-2 のプログラムはこの関数の中に記述すること
-// 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
   let shop1 = data.results.shop[0];
   console.log("検索結果1件目");
@@ -25,12 +22,101 @@ function print(data) {
   console.log("最寄駅: " + shop2.station_name);
 }
 
-// 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let divResult = document.createElement('div');
+  divResult.setAttribute('id', 'result');
+  let b = document.querySelector('body');
+  b.insertAdjacentElement('beforeend', divResult);
 
+  let pCount = document.createElement('p');
+  pCount.setAttribute('id', 'result-count');
+  pCount.textContent = data.results.shop.length + '件がヒットしました.';
+  divResult.insertAdjacentElement('beforeend', pCount);
+
+  let count = 1;
+  for (let shop of data.results.shop) {
+    let divCard = document.createElement('div');
+    divCard.setAttribute('class', 'shop-card');
+
+    let h2 = document.createElement('h2');
+    h2.textContent = '検索結果' + count + '件目';
+    divCard.insertAdjacentElement('beforeend', h2);
+
+    let h3 = document.createElement('h3');
+    h3.textContent = '店舗名:' + shop.name;
+    divCard.insertAdjacentElement('beforeend', h3);
+
+    let ul = document.createElement('ul');
+
+    let liAddr = document.createElement('li');
+    let spanAddr = document.createElement('span');
+    spanAddr.setAttribute('class', 'label');
+    spanAddr.textContent = '住所:';
+    liAddr.insertAdjacentElement('beforeend', spanAddr);
+    
+    let aAddr = document.createElement('a');
+    aAddr.setAttribute('href', 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(shop.address));
+    aAddr.setAttribute('target', '_blank');
+    aAddr.setAttribute('rel', 'noopener noreferrer');
+    aAddr.textContent = shop.address;
+    liAddr.insertAdjacentElement('beforeend', aAddr);
+    ul.insertAdjacentElement('beforeend', liAddr);
+
+    let liBudget = document.createElement('li');
+    let spanBudget = document.createElement('span');
+    spanBudget.setAttribute('class', 'label');
+    spanBudget.textContent = '予算:';
+    liBudget.insertAdjacentElement('beforeend', spanBudget);
+    liBudget.appendChild(document.createTextNode(shop.budget.name));
+    ul.insertAdjacentElement('beforeend', liBudget);
+
+    let liCatch = document.createElement('li');
+    let spanCatch = document.createElement('span');
+    spanCatch.setAttribute('class', 'label');
+    spanCatch.textContent = 'キャッチコピー:';
+    liCatch.insertAdjacentElement('beforeend', spanCatch);
+    liCatch.appendChild(document.createTextNode(shop.catch));
+    ul.insertAdjacentElement('beforeend', liCatch);
+
+    let liGenre = document.createElement('li');
+    let spanGenre = document.createElement('span');
+    spanGenre.setAttribute('class', 'label');
+    spanGenre.textContent = 'ジャンル:';
+    liGenre.insertAdjacentElement('beforeend', spanGenre);
+    liGenre.appendChild(document.createTextNode(shop.genre.name));
+    ul.insertAdjacentElement('beforeend', liGenre);
+
+    let liOpen = document.createElement('li');
+    let spanOpen = document.createElement('span');
+    spanOpen.setAttribute('class', 'label');
+    spanOpen.textContent = '営業日時:';
+    liOpen.insertAdjacentElement('beforeend', spanOpen);
+    liOpen.appendChild(document.createTextNode(shop.open));
+    ul.insertAdjacentElement('beforeend', liOpen);
+
+    let liAccess = document.createElement('li');
+    let spanAccess = document.createElement('span');
+    spanAccess.setAttribute('class', 'label');
+    spanAccess.textContent = 'アクセス:';
+    liAccess.insertAdjacentElement('beforeend', spanAccess);
+    liAccess.appendChild(document.createTextNode(shop.access));
+    ul.insertAdjacentElement('beforeend', liAccess);
+
+    let liStation = document.createElement('li');
+    let spanStation = document.createElement('span');
+    spanStation.setAttribute('class', 'label');
+    spanStation.textContent = '最寄駅:';
+    liStation.insertAdjacentElement('beforeend', spanStation);
+    liStation.appendChild(document.createTextNode(shop.station_name));
+    ul.insertAdjacentElement('beforeend', liStation);
+
+    divCard.insertAdjacentElement('beforeend', ul);
+    divResult.insertAdjacentElement('beforeend', divCard);
+    
+    count++;
+  }
 }
 
-// ★ここに今回のコードを書き加える
 function kensakuStart() {
   let inputElement = document.querySelector('input#kensaku');
   let key = inputElement.value;
@@ -40,38 +126,22 @@ function kensakuStart() {
 let searchButton = document.querySelector('button#search');
 searchButton.addEventListener('click', kensakuStart);
 
-// 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
-
-// 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
-
-// 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
 
 }
 
-// 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
 
 }
 
-// 課題6-1: 通信エラーが発生した時の処理
 function showError(err) {
     console.log(err);
 }
 
-// 課題6-1: 通信の最後にいつも実行する処理
 function finish() {
     console.log('Ajax 通信が終わりました');
 }
 
-////////////////////////////////////////
-// 以下はグルメのデータサンプル
-// 注意: 第5回までは以下を変更しないこと！
-// 注意2: 課題6-1 で以下をすべて削除すること
 let data = {
   "results": {
     "api_version": "1.26",
@@ -81,7 +151,7 @@ let data = {
     "shop": [
       {
         "access": "京王八王子駅を背にし右手に見えるローソンの隣のビル、ホテルザ・ビーの2階です。",
-        "address": "東京都八王子市明神町４-6-12　ホテル・ザ・ビー八王子（旧八王子プラザホテル）2F",
+        "address": "東京都八王子市明神町４-6-12 ホテル・ザ・ビー八王子（旧八王子プラザホテル）2F",
         "band": "可",
         "barrier_free": "なし",
         "budget": {
@@ -188,7 +258,7 @@ let data = {
         "capacity": 100,
         "card": "利用可",
         "catch": "2.5時間飲み放題付2000円~ 【★少人数様ソファー★】",
-        "charter": "貸切可 ：八王子で人気の個室バル最大50名様まで対応できます。20名様～フロア貸切応相談　最大100名様までOK",
+        "charter": "貸切可 ：八王子で人気の個室バル最大50名様まで対応できます。20名様～フロア貸切応相談 最大100名様までOK",
         "child": "お子様連れ歓迎 ：チャイルドシートもご用意しています。お子様連れのママ会・ご家族でのご利用にもお気軽にどうぞ♪",
         "close": "【年中無休】貸切宴会のご予約も絶賛受付中！最大100名様までご利用可能ですので、会社宴会 同窓会 宴会にオススメ♪",
         "coupon_urls": {
@@ -202,7 +272,7 @@ let data = {
         "genre": {
           "catch": "八王子 個室居酒屋 飲み放題 肉バル 女子会",
           "code": "G001",
-          "name": "居酒屋"
+          "name": "居院屋"
         },
         "horigotatsu": "なし ：温かな照明と開放的な店内で楽しくご宴会♪八王子での宴会 飲み会 女子会 二次会 合コンに◎",
         "id": "J001275177",
@@ -227,7 +297,7 @@ let data = {
         "midnight": "営業している",
         "mobile_access": "JR八王子駅北口徒歩1分/京王八王子駅徒歩3分",
         "name": "隠れ家バル Funny&Bouquet",
-        "name_kana": "かくれやばる　ふぁにーあんどぶーけ",
+        "name_kana": "かくれやばる ふぁにーあんどぶーけ",
         "non_smoking": "禁煙席なし",
         "open": "月～日、祝日、祝前日: 17:00～翌5:00 （料理L.O. 翌3:00 ドリンクL.O. 翌4:00）",
         "other_memo": "個室や貸切の詳細等お気軽にお電話にてお問い合わせください。八王子での飲み会に◎",
@@ -245,7 +315,7 @@ let data = {
             "s": "https://imgfp.hotp.jp/IMGH/33/59/P038703359/P038703359_58_s.jpg"
           }
         },
-        "private_room": "なし ：個室　2名×4室　4名×8室　8名～10名×4室　20名～40名×2室",
+        "private_room": "なし ：個室 2名×4室 4名×8室 8名～10名×4室 20名～40名×2室",
         "service_area": {
           "code": "SA11",
           "name": "東京"
@@ -264,7 +334,7 @@ let data = {
         "tatami": "なし ：八王子で人気のお座敷個室！最大50名様まで対応できます。",
         "tv": "あり",
         "urls": {
-          "pc": "https://www.hotpepper.jp/strJ001275177/?vos=nhppalsa000016"
+          "pc": "https://www.hotpepper.jp/strJ01275177/?vos=nhppalsa000016"
         },
         "wedding": "八王子での結婚式の二次会や同窓会、打ち上げパーティー等多様なシーンにご利用下さい",
         "wifi": "あり"
@@ -272,4 +342,3 @@ let data = {
     ]
   }
 };
-

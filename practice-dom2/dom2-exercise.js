@@ -1,18 +1,34 @@
 //////////////// ここは書き換えてはいけない！ 
 
 let campus = {
-	address: "八王子市館町",
-	buildingD: ["D101", "D102", "D103", "D201", "D202", "D203", "D204", "D205"],
-	lon: 35.624869704425,
-	lat: 139.28201056633
+  name: "八王子キャンパス",
+  address: "八王子市館町"
 };
 
 let gakka = [
-	{name: "機械システム工学科", ename: "Department of Mechanical Systems Engineering"},
-	{name: "電子システム工学科", ename: "Department of Electronics and Computer Systems"},
-	{name: "情報工学科", ename: "Department of Computer Science"},
-	{name: "デザイン学科", ename: "Department of Design"}
+  { name: "機械システム工学科" },
+  { name: "電子システム工学科" },
+  { name: "情報工学科" },
+  { name: "デザイン学科" }
 ];
 
-//////////////// ここから下にプログラムを書きたそう!
+function show() {
+  let h2Addr = document.querySelector('h2#addr');
+  let pAddr = document.createElement('p');
+  pAddr.textContent = campus.address;
+  h2Addr.insertAdjacentElement('afterend', pAddr);
 
+  let h2Dept = document.querySelector('h2#dept');
+  let ulDept = document.createElement('ul');
+
+  for (let g of gakka) {
+    let li = document.createElement('li');
+    li.textContent = g.name;
+    ulDept.insertAdjacentElement('beforeend', li);
+  }
+  
+  h2Dept.insertAdjacentElement('afterend', ulDept);
+}
+
+let showButton = document.querySelector('button#show');
+showButton.addEventListener('click', show);
