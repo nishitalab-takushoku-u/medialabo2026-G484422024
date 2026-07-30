@@ -78,3 +78,27 @@ h1 {
   text-decoration: underline; /* マウスを載せると下線が出る */
   color: #004499;             /* 少し濃い青に変わる */
 }
+
+/* index.htmlのcss */
+h2 {
+  color: #2c3e50;
+  border-left: 5px solid #0066cc;
+  padding-left: 10px;
+  margin-top: 30px;
+}
+
+h4 {
+  color: #495057;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+a {
+  color: #0066cc;
+  font-weight: bold;
+}
